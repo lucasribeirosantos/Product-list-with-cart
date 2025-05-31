@@ -1,0 +1,77 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: hsl(20, 50%, 98%);
+}
+
+body {
+  padding-top: 3rem;
+}
+
+main, .title {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.title {
+  margin-bottom: 1.8rem;
+  color: hsl(14, 65%, 9%);
+}
+
+.main-list {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --- PRODUCT --- */
+.product img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.product picture {
+  position: relative;
+  width: 100%;
+}
+
+.product picture .add {
+  position: absolute;
+  z-index: 1;
+  bottom: -10%;
+  left: 40%;
+  background-color: #fff;
+  border: 1px solid hsl(14, 65%, 9%);
+  padding: 12px 20px;
+  border-radius: 30px;
+  color: hsl(14, 65%, 9%);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.product picture .add .before::before {
+  content: "";
+  background-image: url(../assets/images/icon-add-to-cart.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 21px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 8px;
+  align-self: baseline;
+}/*# sourceMappingURL=main.css.map */
