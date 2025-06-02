@@ -7,6 +7,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
   <link rel="stylesheet" href="./css/main.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
   
   <title>Frontend Mentor | Product list with cart</title>
 
@@ -17,70 +21,33 @@
     <section id="products-list" class="main-list"></section>
 
     <section class="cart">
-      <h2 class="cart-title">Your cart (<span id="item-count">0</span>)</h2>
+      <h2 class="cart-title">Your Cart (<span id="cart-count" class="cart-count">0</span>)</h2>
 
-      <img src="./assets/images/illustration-empty-cart.svg" alt="Empty cart image" class="empty-cart-img">
+      <!------EMPTY CART------>
+      <div class="empty-info cart-hide">
+        <img src="./assets/images/illustration-empty-cart.svg" alt="Empty cart image" class="empty-cart-img" id="empty-cart-img">
+        <p class="empty-msg" id="empty-cart-msg">Your added itens will appear here</p>
+      </div>
 
-      <p>Your added itens will appear here</p>
+      <!------ACTIVE CART------>
+      <div class="active-cart">
+        <div class="cart-products"></div>
+
+        <div class="order">
+          <div class="total">
+            <h2>Order Total</h2>
+            <span class="total-price" id="total-price">$0.00</span>
+          </div>
+
+          <p>This is a <strong>carbon-neutral</strong>delivery</p>
+
+          <button id="confirm-order">Confirm Order</button>
+        </div>
+      </div>
     </section>
+
   </main>
 
   <script src="./js/index.js" type="text/javascript"></script>
-  
-<!-- 
-  Desserts
-
-  Waffle with Berries
-  Waffle
-  6.50
-  Add to Cart
-
-  Vanilla Bean Crème Brûlée
-  Crème Brûlée
-  7.00
-  Add to Cart
-
-  Macaron Mix of Five
-  Macaron
-  8.00
-  Add to Cart
-
-  Classic Tiramisu
-  Tiramisu
-  5.50
-  Add to Cart
-
-  Pistachio Baklava
-  Baklava
-  4.00
-  Add to Cart
-
-  Lemon Meringue Pie
-  Pie
-  5.00
-  Add to Cart
-
-  Red Velvet Cake
-  Cake
-  4.50
-  Add to Cart
-
-  Salted Caramel Brownie
-  Brownie
-  4.50
-  Add to Cart
-
-  Vanilla Panna Cotta
-  Panna Cotta
-  6.50
-  Add to Cart
-
-  Your Cart (Quantity)
-  Your added items will appear here
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div> -->
 </body>
 </html>
