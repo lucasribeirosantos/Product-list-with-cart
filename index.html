@@ -24,14 +24,14 @@
       <h2 class="cart-title">Your Cart (<span id="cart-count" class="cart-count">0</span>)</h2>
 
       <!------EMPTY CART------>
-      <div class="empty-info cart-hide">
+      <div class="empty-info" id="empty-cart-container">
         <img src="./assets/images/illustration-empty-cart.svg" alt="Empty cart image" class="empty-cart-img" id="empty-cart-img">
         <p class="empty-msg" id="empty-cart-msg">Your added itens will appear here</p>
       </div>
 
       <!------ACTIVE CART------>
-      <div class="active-cart" id="active-cart">
-        <div class="cart-products"></div>
+      <div class="active-cart hide" id="active-cart-container">
+        <div class="cart-products" id="cart-products"></div>
 
         <div class="order">
           <div class="total">

@@ -66,6 +66,59 @@ function setupProductButtons() {
         const decreaseBtn = product.querySelector('.decrease');
         const quantityDisplay = product.querySelector('.quantity-number');
 
+        const productName = product.querySelector('.name').textContent
+        const productPrice = product.querySelector('.price').textContent
+
+        const emptyContainer = document.getElementById('empty-cart-container')
+        const activeContainer = document.getElementById('active-cart-container')
+
+        const cartProductsContainer = document.getElementById('cart-products')
+
+        function renderCart() {
+            emptyContainer.classList.add('cart-hide');
+            activeContainer.classList.remove('hide');
+
+            let numericPrice = parseFloat(productPrice.replace("R$", "").replace("$", "").replace(",", "."));
+            let total = numericPrice * quantity;
+
+            let existingCartItem = cartProductsContainer.querySelector(`[data-product="${productName}"]`);
+
+            if (quantity === 0) {
+                if (existingCartItem) {
+                    existingCartItem.remove();
+                }
+            } else {
+                if (existingCartItem) {
+                    existingCartItem.querySelector('.cart-quantity').textContent = `${quantity}x`;
+                    existingCartItem.querySelector('.cart-total').textContent = `$${total.toFixed(2)}`;
+                } else {
+                    cartProductsContainer.innerHTML += `
+                        <div class="cart-product" data-product="${productName}">
+                            <h2>${productName}</h2>
+                            <div>
+                                <span class="cart-quantity">${quantity}x</span>
+                                <span class="cart-price">@${productPrice}</span>
+                                <span class="cart-total">$${total.toFixed(2)}</span>
+                            </div>
+
+                            <button class="cart-remove">X</button>
+                        </div>
+                    `;
+                }
+            }
+
+            console.log(totalCartQuantity)
+            if (totalCartQuantity === 0) {
+                cartProductsContainer.classList.add('hide');
+                activeContainer.classList.add('hide');
+                emptyContainer.classList.remove('cart-hide');
+            } else {
+                cartProductsContainer.classList.remove('hide');
+                activeContainer.classList.remove('hide');
+                emptyContainer.classList.add('cart-hide');
+            }
+        }
+
         let quantity = 0;
 
         addBtn.addEventListener('click', () => {
@@ -75,6 +128,7 @@ function setupProductButtons() {
          quantityDisplay.textContent = quantity;
             addBtn.classList.add('hide');
             quantityControl.classList.remove('hide');
+            renderCart()
         });
 
         increaseBtn.addEventListener('click', () => {
@@ -82,6 +136,7 @@ function setupProductButtons() {
             totalCartQuantity++;
             quantityDisplay.textContent = quantity;
             updateCartCount();
+            renderCart()
         });
 
         decreaseBtn.addEventListener('click', () => {
@@ -89,12 +144,14 @@ function setupProductButtons() {
                 quantity--;
                 totalCartQuantity--;
                 updateCartCount();
+                renderCart()
             }
 
             if (quantity <= 0) {
                 quantity = 0;
                 quantityControl.classList.add('hide');
                 addBtn.classList.remove('hide');
+                renderCart()
             }
 
         quantityDisplay.textContent = quantity;
@@ -104,6 +161,5 @@ function setupProductButtons() {
     function updateCartCount() {
         cartCount.textContent = totalCartQuantity;
     }
-
     
 }
