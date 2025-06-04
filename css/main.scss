@@ -1,5 +1,6 @@
 @use 'reset';
 @use 'variables';
+@use 'active-cart';
 
 html {
     scroll-behavior: smooth;
@@ -167,7 +168,6 @@ main {
   min-width: 20px;
   text-align: center;
 }
-
 
 .hide {
     display: none;

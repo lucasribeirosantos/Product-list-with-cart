@@ -5,6 +5,62 @@
   font-family: "Red Hat Text", sans-serif;
 }
 
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.total h2 {
+  font-size: 16px;
+  color: hsl(14, 65%, 9%);
+  font-weight: 500;
+}
+
+.total span {
+  font-weight: bold;
+  font-size: 25px;
+  color: hsl(14, 65%, 9%);
+}
+
+.order p {
+  background-color: hsl(13, 31%, 94%);
+  padding: 15px 10px;
+  text-align: center;
+  border-radius: 8px;
+  color: hsl(14, 65%, 9%);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.order p::before {
+  content: "";
+  background-image: url(../assets/images/icon-carbon-neutral.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.order strong {
+  margin: 0 3px;
+}
+
+.order button {
+  width: 100%;
+  background-color: hsl(14, 86%, 42%);
+  border: none;
+  border-radius: 25px;
+  padding: 15px 0;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+}
+
 html {
   scroll-behavior: smooth;
   width: 100vw;
