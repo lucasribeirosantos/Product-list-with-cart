@@ -94,14 +94,16 @@ function setupProductButtons() {
                 } else {
                     cartProductsContainer.innerHTML += `
                         <div class="cart-product" data-product="${productName}">
-                            <h2>${productName}</h2>
-                            <div>
-                                <span class="cart-quantity">${quantity}x</span>
-                                <span class="cart-price">@${productPrice}</span>
-                                <span class="cart-total">$${total.toFixed(2)}</span>
+                            <div class="cart-product-info">
+                                <h2>${productName}</h2>
+                                <div>
+                                    <span class="cart-quantity">${quantity}x</span>
+                                    <span class="cart-price">@ ${productPrice}</span>
+                                    <span class="cart-total">$${total.toFixed(2)}</span>
+                                </div>
                             </div>
 
-                            <button class="cart-remove">X</button>
+                            <button class="cart-remove"><img src="../assets/images/icon-remove-item.svg"></button>
                         </div>
                     `;
                 }
