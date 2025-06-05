@@ -103,13 +103,12 @@ function setupProductButtons() {
                                 </div>
                             </div>
 
-                            <button class="cart-remove"><img src="../assets/images/icon-remove-item.svg"></button>
+                            <button class="cart-remove" id="cart-remove"><img src="../assets/images/icon-remove-item.svg"></button>
                         </div>
                     `;
                 }
             }
 
-            console.log(totalCartQuantity)
             if (totalCartQuantity === 0) {
                 cartProductsContainer.classList.add('hide');
                 activeContainer.classList.add('hide');
@@ -163,5 +162,38 @@ function setupProductButtons() {
     function updateCartCount() {
         cartCount.textContent = totalCartQuantity;
     }
-    
+
+
+    document.getElementById('cart-products').addEventListener('click', (e) => {
+        if (e.target.closest('.cart-remove')) {
+            const cartItem = e.target.closest('.cart-product');
+            const productName = cartItem.dataset.product;
+
+            const productInList = Array.from(document.querySelectorAll('.product')).find(p => {
+                return p.querySelector('.name').textContent === productName;
+            });
+
+            if (productInList) {
+                const quantityDisplay = productInList.querySelector('.quantity-number');
+                const quantityControl = productInList.querySelector('.quantity-control');
+                const addBtn = productInList.querySelector('.main-btn');
+
+                const quantityToRemove = parseInt(quantityDisplay.textContent, 10) || 0;
+                totalCartQuantity -= quantityToRemove;
+
+                quantityDisplay.textContent = 0;
+                quantityControl.classList.add('hide');
+                addBtn.classList.remove('hide');
+            }
+
+            cartItem.remove();
+            updateCartCount();
+
+            if (totalCartQuantity <= 0) {
+                document.getElementById('cart-products').classList.add('hide');
+                document.getElementById('active-cart-container').classList.add('hide');
+                document.getElementById('empty-cart-container').classList.remove('cart-hide');
+            }
+        }
+    });
 }
